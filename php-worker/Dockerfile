@@ -38,6 +38,22 @@ RUN if [ ${INSTALL_PGSQL} = true ]; then \
         && docker-php-ext-install pdo_pgsql \
 ;fi
 
+###########################################################################
+# PHP REDIS EXTENSION
+###########################################################################
+
+RUN printf "\n" | pecl -q install -o -f redis && \
+    rm -rf /tmp/pear && \
+    docker-php-ext-enable redis
+
+###########################################################################
+# PHP MONGO EXTENSION
+###########################################################################
+
+RUN printf "\n" | pecl -q install -o -f mongodb && \
+    rm -rf /tmp/pear && \
+    docker-php-ext-enable mongodb
+
 RUN rm /var/cache/apk/* \
     && mkdir -p /var/www
 
