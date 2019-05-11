@@ -1,0 +1,11 @@
+[program:laravel-horizon]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/artisan horizon
+autostart=true
+autorestart=true
+<<<<<<< HEAD:laravel-horizon/supervisord.d/laravel-horizon.conf.example
+=======
+numprocs=8
+user=laradock
+>>>>>>> merge:php-worker/supervisord.d/laravel-worker.conf.example
+redirect_stderr=true
